@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Bootstrap y JQuery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body.light-mode {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        body.dark-mode {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        .dark-mode .navbar, .dark-mode .table {
+            background-color: #343a40;
+        }
+        .dark-mode .table thead th {
+            color: #f8f9fa;
+        }
+        .dark-mode .table tbody tr {
+            background-color: #495057;
+            color: #f8f9fa;
+        }
+        .dark-mode .btn-outline-light {
+            color: #f8f9fa;
+            border-color: #f8f9fa;
+        }
+        .dark-mode .btn-outline-light:hover {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .light-mode .btn-outline-dark {
+            color: #343a40;
+            border-color: #343a40;
+        }
+        .light-mode .btn-outline-dark:hover {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        .light-mode .btn-dark-mode {
+            color: #f8f9fa;
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+        .light-mode .btn-dark-mode:hover {
+            background-color: #495057;
+            border-color: #495057;
+        }
+        .dark-mode .btn-light-mode {
+            color: #343a40;
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
+        }
+        .dark-mode .btn-light-mode:hover {
+            background-color: #dee2e6;
+            border-color: #dee2e6;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Mi Página</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button id="light-mode-btn" class="btn btn-dark-mode">Modo Claro</button>
+                </li>
+                <li class="nav-item">
+                    <button id="dark-mode-btn" class="btn btn-outline-dark ml-2">Modo Oscuro</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Título de la Página</h1>
+        <div class="text-center">
+            <img src="img.jpg" class="img-fluid mt-3" alt="Imagen">
+        </div>
+        <div class="mt-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Juan</td>
+                        <td>Pérez</td>
+                        <td>@juanp</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>María</td>
+                        <td>López</td>
+                        <td>@marial</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Pedro</td>
+                        <td>Gómez</td>
+                        <td>@pedrog</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function toggleButtons() {
+                $('#light-mode-btn').toggleClass('btn-dark-mode btn-outline-light');
+                $('#dark-mode-btn').toggleClass('btn-outline-dark btn-light-mode');
+            }
+
+            $('#light-mode-btn').click(function() {
+                $('body').removeClass('dark-mode').addClass('light-mode');
+                $('nav').removeClass('navbar-dark bg-dark').addClass('navbar-light bg-light');
+                toggleButtons();
+            });
+
+            $('#dark-mode-btn').click(function() {
+                $('body').removeClass('light-mode').addClass('dark-mode');
+                $('nav').removeClass('navbar-light bg-light').addClass('navbar-dark bg-dark');
+                toggleButtons();
+            });
+        });
+    </script>
+</body>
+</html>
